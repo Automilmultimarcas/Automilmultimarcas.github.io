@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automil Multimarcas</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: rgb(0,0,0);
+    background: linear-gradient(360deg, rgb(255, 255, 255) 0%, rgba(143, 140, 140, 0.835) 43%, rgba(255, 255, 255, 0.651) 100%);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+        }
+
+        .menu-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #222;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .main-content h2{
+            text-align: center;
+            margin: 0 auto;
+            padding-bottom: 20px;
+            padding-top: 20px;
+
+        }
+
+        /* Bottom Tab Bar */
+        .tab-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .tab-bar .tab-item {
+            color: white;
+     
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab-bar .tab-item i {
+            font-size: 24px;
+        }
+
+        .tab-bar .tab-item span {
+            display: block;
+            font-size: 12px;
+        }
+
+
+        
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+
+    #projetos h2 {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    
+    .grid {
+        margin: 0 auto;
+      display: grid;
+      
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;    background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+
+      /*
+      background: rgba(0, 0, 0, 0.664);
+      background: linear-gradient(360deg, rgba(0, 0, 0, 0.89) 0%, rgba(69,28,28,1) 51%, rgba(204, 48, 20, 0.986) 100%);
+*/
+border: 1px solid black;
+
+
+
+      
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card h3{
+        font-weight: 300;
+        color: rgb(255, 255, 255);
+    }
+    .card p {
+        font-size: 17px;
+        color: rgb(168, 167, 167);
+    }
+    .card:hover {
+     
+    }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header {
+                font-size: 18px;
+            }
+
+            .main-content {
+                margin: 5px;
+                padding: 10px;
+            }
+        }
+
+
+        .ag-format-container {
+  width: 1142px;
+  margin: 0 auto;
+}
+
+.ag-courses_box {
+
+
+  padding: 50px 0;
+}
+.ag-courses_item {
+  -ms-flex-preferred-size: calc(33.33333% - 30px);
+  flex-basis: calc(33.33333% - 30px);
+
+  margin: 0 15px 30px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+  text-decoration: none;
+}
+.ag-courses-item_link {
+  display: block;
+  padding: 30px 20px;
+  background-color: #252424;
+
+  overflow: hidden;
+
+  position: relative;
+  text-decoration: none;
+}
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-item_date {
+  text-decoration: none;
+  color: #FFF;
+}
+.ag-courses-item_link:hover .ag-courses-item_bg {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}
+.ag-courses-item_title {
+  min-height: 87px;
+  margin: 0 0 25px;
+ 
+  overflow: hidden;
+
+  font-weight: bold;
+  font-size: 30px;
+  color: #FFF;
+
+  z-index: 2;
+  position: relative;
+  text-decoration: none;
+}
+.ag-courses-item_date-box {
+  font-size: 18px;
+  color: #FFF;
+
+  z-index: 2;
+  position: relative;
+}
+.ag-courses-item_date {
+  font-weight: bold;
+  color: #b4b4b6;
+
+  -webkit-transition: color .5s ease;
+  -o-transition: color .5s ease;
+  transition: color .5s ease
+}
+.ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #df1818;
+
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+
+  border-radius: 50%;
+
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+.ag-courses_item.ag-courses-item_bg {
+  background-color: #ca2323;
+}
+
+.bgL{
+      display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.753); /* Fundo escuro semi-transparente */
+         justify-content: center;
+         align-items: center;
+         z-index: 100;
+}
+
+
+
+/*chatbot*/
+
+#chat-container {
+    font-family: Arial, sans-serif;
+            width: 500px;
+            height: 300px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+
+
+          
+         margin: 50px auto;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        #logo {
+            background-color:   #132174;
+
+          
+/*  */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        #messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #e1ffc7;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+        }
+        #input-container {
+            display: flex;
+        }
+        #input-container input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+        #input-container button {
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        #input-container button:hover {
+            background-color: #0056b3;
+        }
+        @keyframes dots {
+            0%, 20% {
+                color: rgba(0,0,0,0);
+                text-shadow:
+                    .25em 0 0 rgba(0,0,0,0),
+                    .5em 0 0 rgba(0,0,0,0);
+            }
+            40% {
+                color: black;
+                text-shadow:
+                    .25em 0 0 rgba(0,0,0,0),
+                    .5em 0 0 rgba(0,0,0,0);
+            }
+            60% {
+                text-shadow:
+                    .25em 0 0 black,
+                    .5em 0 0 rgba(0,0,0,0);
+            }
+            80%, 100% {
+                text-shadow:
+                    .25em 0 0 black,
+                    .5em 0 0 black;
+            }
+        }
+        .dots::after {
+            content: ' .';
+            animation: dots 1s steps(5, end) infinite;
+        }
+        .btnchatbot{
+            position: fixed;
+            background-color: #3297A9;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            top: 500px;
+            width: 290px;
+            z-index: 10;
+            left: 70%;
+            border: 1px solid white;
+            animation: moveUpDown 1s ease-in-out infinite;  
+            cursor: pointer;    
+        }
+        @media only screen and (max-width: 768px) {
+
+
+            #chat-container {
+    font-family: Arial, sans-serif;
+            width: 330px;
+            height: 300px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+
+
+          
+         margin: 50px auto;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .btnchatbot{
+            left: 5%;
+        }}
+
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .ag-courses-item_title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
+
+}
+@media only screen and (max-width: 639px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .ag-courses-item_title {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .ag-courses-item_link {
+    padding: 22px 40px;
+  }
+  .ag-courses-item_date-box {
+    font-size: 16px;
+  }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
+        Automil Multimarcas
+    </div>
+
+
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="#">Home</a>
+        <a href="#">Carros Novos</a>
+        <a href="#">Carros Usados</a>
+        <a href="#">Financiamento</a>
+        <a href="#">Contato</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div onclick="abrirmodalchatbot()" style=" color: rgba(255, 255, 255, 0.781); left: 130px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.438); margin: 0 auto;  position: fixed; margin: 0 auto; text-align: center; top: 80%; z-index: 5; background-color: rgba(26, 156, 43, 0.795); width: 200px; border-radius: 10px; padding: 10px;">
+            Assistente virtual
+        </div>
+
+        <div id="chatbotdiv" class="bgL" onclick="esconderDiv2()">
+
+            <div id='chat-container'  onclick="event.stopPropagation()">
+               <div id='logo'> CHAT BOT</div>
+       
+               <div id='messages'></div>
+               <div id='input-container'>
+                   <input type='text' id='user-input' placeholder='Digite sua mensagem...'>
+                   <button onclick='sendMessage()'>Enviar</button>
+               </div>
+           </div></div>
+
+        <h2 style="color: rgb(8, 8, 77);">Bem-vindo ao Automil Multimarcas</h2>
+
+
+        <section id="projetos"> 
+
+
+            <div class="ag-format-container">
+                <div class="ag-courses_box">
+                  <div class="ag-courses_item">
+
+                    <a href="servicos.html" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Agendar test-drive
+                      </div>
+              
+                      <div class="ag-courses-item_date-box">
+                       Agende seu test-drive e vá até a consessionária
+                       <br>
+                        <span class="ag-courses-item_date">
+                          Clique aqui!
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                           Test-drive com realidade virtual
+                      </div>
+              
+                      <div class="ag-courses-item_date-box">
+                        Faça um test-drive no veículo pela sua casa
+                        <br>
+                        <span class="ag-courses-item_date">
+                            Clique aqui!
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Comprar online
+                    </div>
+              
+                      <div class="ag-courses-item_date-box">
+                        Compra de veículos 100% online
+                        <br>
+                        <span class="ag-courses-item_date">
+                            Clique aqui!
+
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                            Simular financiamento
+                    </div>
+              
+                      <div class="ag-courses-item_date-box">
+                        Simular seu financimaneto 100% online
+                        
+                        <span class="ag-courses-item_date">
+                            Clique aqui!
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Programa de Fidelidade
+                      </div>
+              
+                      <div class="ag-courses-item_date-box">
+                        Programa de Fidelidade
+                        <span class="ag-courses-item_date">
+                          30.11.2022
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Front-end development&#160;+ jQuery&#160;+ CMS
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg">
+                      </div>
+                      <div class="ag-courses-item_title">
+                        Digital Marketing
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Interior Design
+                      </div>
+              
+                      <div class="ag-courses-item_date-box">
+                        Start:
+                        <span class="ag-courses-item_date">
+                          31.10.2022
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+              
+                </div>
+              </div>
+
+
+            <!-- 
+            <div class="grid">
+              <div class="card">
+                <h3 >FINANCIAMENTO</h3>
+                <p>Faça agendamentos nos melhores lava-rápidos dentro do aplicativo</p>
+              </div>
+              <div class="card">
+                <h3>TEST-DRIVE COM REALIDADE VIRTUAL</h3>
+                <p>Esteja por dentro dos produtos para serviços</p>
+              </div>
+              <div class="card">
+                <h3>COMPRA ONLINNE</h3>
+                <p>Receba um profissional em sua casa!, é rápido e fácil</p>
+              </div>
+              <div class="card">
+                <h3>AGENDAR TEST-DRIVE</h3>
+                <p>Receba um profissional em sua casa!, é rápido e fácil</p>
+              </div>
+       
+        
+        
+              
+            </div>
+        
+        
+            <div class="grid" style="margin-top: 30px;">  
+              <div style="width: 100%; margin: 0 auto; text-align: center; padding: 2px;    ">
+                <img src="https://img77.uenicdn.com/image/upload/v1533914350/service_images/shutterstock_1033978603.jpg" style="width: 350px; border-radius: 10px;  box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75)"  alt="Contato 1">
+        
+              </div>
+              <div style="width: 100%; margin: 0 auto; text-align: center; padding: 2px;">
+                <img src="https://www.vero.com.br/wp-content/uploads/2019/03/LavaCar_Easy-Resize.com-1.jpg" style="width: 350px;  border-radius: 10px;  box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75)"  alt="Contato 2">
+        
+              </div>
+              <div style="width: 100%; margin: 0 auto; text-align: center; padding: 2px;">
+                <img src="https://img.freepik.com/fotos-gratis/lindo-carro-no-servico-de-lavagem_23-2149212212.jpg" style="width: 350px;  border-radius: 10px;  box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75)" alt="Contato 2">
+        
+              </div>
+        
+        
+              
+            </div>
+        
+          
+             -->
+          </section>
+
+
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-search"></i>
+            <span>Buscar</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>Perfil</span>
+        </div>
+    </div>
+
+    <script>
+        // Funções para abrir e fechar o menu lateral
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
+
+    <!-- Adicionando Font Awesome para ícones -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        
+
+var inicial = `Olá! Seja bem-vindo ao assistente virtual para te ajudar aqui no aplicativo da Automil Multimarcas, pode me perguntar o que quiser!`
+
+function abrirmodalchatbot(){
+    var chatbot = document.getElementById('chatbotdiv');
+    chatbot.style.display = 'initial'
+
+    appendMessage(inicial, 'bot-message');
+}
+
+function sendMessage() {
+        const userInput = document.getElementById('user-input');
+        const message = userInput.value.trim();
+        if (message) {
+            appendMessage(message, 'user');
+            userInput.value = '';
+            getBotResponse(message);
+        }
+    }
+
+
+    function appendMessage(message, sender) {
+        const messageContainer = document.getElementById('messages');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+        messageElement.textContent = message;
+        messageContainer.appendChild(messageElement);
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+    }
+
+    async function getBotResponse(userMessage) {
+        const messageContainer = document.getElementById('messages');
+        const typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('message', 'bot-message', 'dots');
+        typingIndicator.textContent = 'Bot está digitando';
+        messageContainer.appendChild(typingIndicator);
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+
+        try {
+            
+            const response = await api(userMessage)
+
+            const botMessage = response
+
+           
+
+            if (messageContainer.contains(typingIndicator)) {
+                messageContainer.removeChild(typingIndicator);
+            }
+
+            console.log(typeof(botMessage))
+            console.log(botMessage)
+      
+      
+                appendMessage(botMessage, 'bot');
+            
+
+        } catch (error) {
+            console.error('Erro ao obter resposta do bot:', error);
+            if (messageContainer.contains(typingIndicator)) {
+                messageContainer.removeChild(typingIndicator);
+            }
+            appendMessage('Erro ao se comunicar com o servidor.', 'bot');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+async function api(texto) {
+   
+    const v1 = 'sk-z3Pu_0jeLM3oUOA'; 
+    const v2 = 'bZNfhC35wA2UgrY3BRn2i'
+    const v3 = 'CCkJm2T3BlbkFJusgCJHL'
+    const v4 = '-JVfG0brfxACoawFJu4-Bo58i8ZE034pzEA'
+
+    c = v1 + v2 + v3 + v4
+
+    // Substitua com sua chave de API
+
+    let historico = [];
+    //  
+    let minhavari = `${padrao}. Prompt do usuário:  ${texto}`;
+    historico.push({ role: 'user', content: minhavari });
+
+    let respostaCompleta = [];
+   const opnurl = 'https://api.openai.com/v1/chat/completions'
+   
+
+    const response = await fetch( opnurl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${c}`,
+        },
+        body: JSON.stringify({
+            model: 'gpt-3.5-turbo',  // ou 'gpt-4' se preferir
+            messages: historico,
+            stream: true,  // Para ativar o streaming de respostas
+        }),
+    });
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+    
+    while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+
+        // Divida os chunks por novas linhas, já que o servidor envia "data: {JSON}\n"
+        const lines = chunk.split('\n');
+
+        for (let line of lines) {
+            // Ignore as linhas que não começam com 'data:'
+            if (!line.startsWith('data:')) continue;
+
+            const json = line.replace(/^data: /, ''); // Remova o prefixo "data: "
+            if (json === '[DONE]') break;  // Fim do stream
+
+            try {
+                const parsedChunk = JSON.parse(json);  // Parse JSON válido
+
+                if (parsedChunk.choices && parsedChunk.choices[0].delta.content) {
+                    respostaCompleta.push(parsedChunk.choices[0].delta.content);
+                }
+            } catch (error) {
+                console.error("Erro ao processar o chunk JSON:", error);
+            }
+        }
+    }
+
+    // Junte todas as partes da resposta em uma única string
+    const respostaFinal = respostaCompleta.join('');
+    historico.push({ role: 'assistant', content: respostaFinal });
+
+    // Retorne a resposta final e o histórico
+    return  respostaFinal ; 
+}
+
+
+
+
+
+var padrao = `Instruções
+
+Contexto: Você é um assistente virtual amigável e interativo para ajudar os compradores de carros que estão usando o aplicativo AutoRevolution,  campos específicos que precisam ser preenchidos de forma eficaz.
+
+Sua Função:
+
+Orientação Personalizada: Orientar o usuário sobre como comprar carros e etc na loja: Automil Multimarcas .
+
+Reposnda dúvidas: Sobre financiamento de carros no Brasil, sobre test-drive e documentação quando solicitado.
+
+
+`
+
+    </script>
+</body>
+</html>
